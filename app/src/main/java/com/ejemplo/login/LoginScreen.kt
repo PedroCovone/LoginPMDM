@@ -129,11 +129,11 @@ fun LoginScreen(
                 IconButton(onClick = { showPassword = !showPassword }) {
                     Icon(
                         imageVector = if (showPassword) {
-                            Icons.Filled.EmojiEvents
+                            Icons.Filled.EmojiEvents // T
                         } else {
-                            Icons.Filled.EmojiEmotions
+                            Icons.Filled.EmojiEmotions // T
                         },
-                        contentDescription = stringResource(R.string.toggle_password)
+                        contentDescription = stringResource(R.string.toggle_password) // T
                     )
                 }
             },
