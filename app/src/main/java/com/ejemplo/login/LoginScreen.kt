@@ -38,6 +38,8 @@ fun LoginScreen(
     var passwordError by remember { mutableStateOf<String?>(null) }
     var showPassword by remember { mutableStateOf(false) }
 
+    val mensajeErrorEmail = stringResource(R.string.error_email)
+    val mensajeErrorPassword = stringResource(R.string.error_password)
     val focusManager = LocalFocusManager.current
     val emailFocusRequester = remember { FocusRequester() }
 
@@ -48,16 +50,20 @@ fun LoginScreen(
     fun validarEmail(): Boolean {
         val emailValido = email.isNotBlank() &&
                 Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches()
-        emailError = if (!emailValido) R.string.error_email.toString() else null
+
+        emailError = if (!emailValido)
+                        mensajeErrorEmail
+                    else null
         return emailValido
     }
 
     fun validarPassword(): Boolean {
         val regex = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$".toRegex()
         val passValida = regex.matches(password)
-        passwordError = if (!passValida) {
-            R.string.error_password.toString()
-        } else null
+
+        passwordError = if (!passValida)
+                            mensajeErrorPassword
+                        else null
         return passValida
     }
 
